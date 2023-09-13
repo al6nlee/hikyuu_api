@@ -1,0 +1,39 @@
+version: '3.5'
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - /opt/docker/mysql/conf:/etc/mysql/conf.d
+      - /opt/docker/mysql/logs:/logs
+      - /opt/docker/mysql/data:/var/lib/mysql
+      - /opt/myblog-api/myblog.sql:/root/myblog.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+    restart: always
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: always
+    command: [ "redis-server", "--requirepass", "admin123"]
+
+  myblog_api:
+    image: myblog_api:v1
+    container_name: myblog_api
+    ports:
+      - "8888:8888"
+    restart: always
+    links:
+      - mysql
+      - redis
+
+networks:
+  web-api:
+    ipam:
+      config:
+        - subnet: 192.168.220.0/24
