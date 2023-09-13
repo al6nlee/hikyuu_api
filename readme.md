@@ -84,8 +84,12 @@ docker run --name myblog_api -d -p 8888:8888 --restart always --link mysql --lin
 ```
 
 ### NGINX部署
-* ningx配置文件
+* nginx容器启动
 ```bash
+mkdir -p /opt/docker/nginx
+cd /opt/docker/nginx
+
+cat >> .nginx.conf << EOF
 server {
     listen       80;
     server_name  ~^.*$;
@@ -95,9 +99,8 @@ server {
           uwsgi_ignore_client_abort on;
     }
 }
-```
-* nginx容器启动
-```bash
+EOF
+
 docker run --name nginx -d -p 80:80 -v $PWD/nginx.conf:/etc/nginx/conf.d/api.conf --restart always --link myblog_api nginx
 ```
 ## 注意事项
