@@ -89,7 +89,7 @@ docker run --name myblog_api -d -p 8888:8888 --restart always --link mysql --lin
 mkdir -p /opt/docker/nginx
 cd /opt/docker/nginx
 
-cat >> .nginx.conf << EOF
+cat >> nginx.conf << EOF
 server {
     listen       80;
     server_name  ~^.*$;
