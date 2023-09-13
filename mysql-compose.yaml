@@ -9,7 +9,7 @@ services:
       - ./conf:/etc/mysql/conf.d
       - ./logs:/logs
       - ./data:/var/lib/mysql
-      - ./:/root
+      - /opt/myblog-api:/root/myblog-api
     environment:
       MYSQL_ROOT_PASSWORD: admin123
     restart: always
