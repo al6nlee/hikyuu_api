@@ -95,13 +95,13 @@ server {
     server_name  ~^.*$;
     location / {
           include uwsgi_params;
-          uwsgi_pass drf:8888;
+          uwsgi_pass myblog_api:8000;
           uwsgi_ignore_client_abort on;
     }
 }
 EOF
 
-docker run --name nginx -d -p 80:80 -v $PWD/nginx.conf:/etc/nginx/conf.d/api.conf --restart always --link myblog_api nginx
+docker run --name nginx -d -p 80:80 -v $PWD/nginx.conf:/etc/nginx/conf.d/api.conf --restart always --link web-api_default nginx
 ```
 ## 注意事项
 

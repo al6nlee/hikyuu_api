@@ -23,14 +23,34 @@ services:
     command: [ "redis-server", "--requirepass", "admin123"]
 
   myblog_api:
-    image: myblog_api:v1
+    image: myblog_api:v6
     container_name: myblog_api
     ports:
-      - "8888:8888"
+      - "8000:8000"
     restart: always
     links:
       - mysql
       - redis
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "2000:80"
+    volumes:
+      - /opt/myblog-api/nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: always
+    depends_on:
+      - myblog_api
+
+  web-pc:
+    image: myblog_pc:v4
+    container_name: web-pc
+    ports:
+      - "80:80"
+    restart: always
+    depends_on:
+      - nginx
 
 networks:
   web-api:

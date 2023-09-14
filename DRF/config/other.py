@@ -20,8 +20,8 @@ EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 # 七牛OSS存储配置
 QINIU_AK = env.str('QINIU_AK')
 QINIU_SK = env.str('QINIU_SK')
-QINIU_BUCKET = 'cuiliangoss'
-QINIU_DOMAIN = 'https://oss.cuiliangblog.cn/'
+QINIU_BUCKET = 'web-api'
+QINIU_DOMAIN = 's0wrvis4u.hn-bkt.clouddn.com'
 
 # 百度统计token
 BAIDU_START_DATE = '20201101'
