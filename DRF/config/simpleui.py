@@ -2,7 +2,7 @@
 SIMPLEUI_HOME_INFO = False
 SIMPLEUI_ANALYSIS = False
 # Django Simple UI 自定义logo
-SIMPLEUI_LOGO = 'https://oss.cuiliangblog.cn/image/logo.png'
+SIMPLEUI_LOGO = 'https://img-blog.csdnimg.cn/e4ccd3707c5e41fda51d9b75244020a5.png'
 # 隐藏首页的快捷操作和最近动作
 SIMPLEUI_HOME_QUICK = False
 SIMPLEUI_HOME_ACTION = False
