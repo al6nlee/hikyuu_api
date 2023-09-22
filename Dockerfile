@@ -1,6 +1,6 @@
 ## 项目base镜像文件
 #FROM python:3.11
-FROM base-python3.11:v0.2
+FROM al6nlee/base-python3.11:v0.2
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone && pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 ADD . /opt/DRF/
